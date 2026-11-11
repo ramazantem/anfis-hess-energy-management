@@ -19,10 +19,10 @@ baseline ile karşılaştırılacak ve geliştirilecektir.
 
 ## Proje Durumu
 - [x] Gün 1: İskelet, literatür, makale analizi
-- [ ] Gün 2: Veri, sistem modeli, baseline
-- [ ] Gün 3: ANFIS reproduction
-- [ ] Gün 4: Özgün katkı ve deneyler
-- [ ] Gün 5: Sonuçlar, rapor, sunum
+- [x] Gün 2: Veri, sistem modeli, baseline
+- [x] Gün 3: ANFIS reproduction
+- [x] Gün 4: Özgün katkı ve deneyler
+- [x] Gün 5: Sonuçlar, rapor, sunum
 
 ## Klasör Yapısı
 - `data/` sürüş çevrimleri
