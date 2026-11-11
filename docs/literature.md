@@ -12,6 +12,13 @@ Konu: Batarya/süperkapasitör (HESS) enerji yönetimi, bulanık mantık ve ANFI
 | 6 | Lin - A Control Strategy for Capacity Allocation of Hybrid Energy Storage System Based on Hierarchical Processing of Demand Power (arXiv 2010.01277) | 2020 | Bulanık denetleyici + Savitzky-Golay filtresi | Metrik örneği: batarya tepe akımı ve çevrim ömrü |
 | 7 | Wangsupphaphol, Idris, Jusoh, Muhamad, Phichaisawat - A Systematic Review of Energy Management System for Battery/Supercapacitor Electric Vehicle Applications (Sustainability 15(14), 11200) | 2023 | Derleme | Genel arka plan, HESS topolojileri ve kural/optimizasyon tabanlı EMS sınıflandırması |
 
+
+## Referans Makale
+   Kumaresan, N. ve Rammohan, A. (2025). Adaptive neuro fuzzy inference system based
+   optimized energy management strategy for the power integration of battery and
+   supercapacitor in electric vehicle. Journal of Energy Storage, 126, 117073.
+   https://doi.org/10.1016/j.est.2025.117073
+
 ## Notlar
 - Ortak metrikler: batarya tepe akımı, RMS akım, kapasite kaybı, SOC.
 - Sık kullanılan sürüş çevrimleri: NEDC, UDDS, WLTP, HWFET.
