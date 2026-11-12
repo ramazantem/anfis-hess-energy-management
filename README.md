@@ -20,9 +20,9 @@ baseline ile karşılaştırılacak ve geliştirilecektir.
 ## Proje Durumu
 - [x] Gün 1: İskelet, literatür, makale analizi
 - [x] Gün 2: Veri, sistem modeli, baseline
-- [x] Gün 3: ANFIS reproduction
-- [x] Gün 4: Özgün katkı ve deneyler
-- [x] Gün 5: Sonuçlar, rapor, sunum
+- [ ] Gün 3: ANFIS reproduction
+- [ ] Gün 4: Özgün katkı ve deneyler
+- [ ] Gün 5: Sonuçlar, rapor, sunum
 
 ## Klasör Yapısı
 - `data/` sürüş çevrimleri
@@ -37,3 +37,26 @@ baseline ile karşılaştırılacak ve geliştirilecektir.
     source .venv/bin/activate
     pip install -r requirements.txt
 
+## Çalıştırma
+    python3 -m experiments.run_baseline
+
+Çıktı: terminalde özet tablo, `results/baseline_simulation.png` grafiği.
+
+## Veri Seti
+Makalenin gerçek E2W hız verisi paylaşılmadığı için (Data available on request) Şekil 8'e
+benzer yaklaşık bir sürüş çevrimi kodla üretilmiştir (`src/models/drive_cycle.py`).
+900 s, 12,05 km, tepe hız 81 km/h, ortalama hız 48,1 km/h; 7 kez tekrarlanır.
+
+## Baseline Sonuçları (Gün 2)
+| Metrik | Sadece batarya | Kural tabanlı HESS | Makale (sadece batarya / ANFIS) |
+|---|---|---|---|
+| Maks. batarya akımı | 133,7 A | 85,6 A | 130 A / 97 A |
+| Menzil (%80 DoD) | 88,4 km | 88,5 km | 88,95 km / 95,975 km |
+
+## Yapılacaklar
+- Kullanılan yöntem ve Bulanık Mantık sistem yapısı
+- Reproduction deneyleri (ANFIS)
+- Özgün katkı
+- Deneysel sonuçlar
+- Sınırlılıklar
+- Kaynaklar
