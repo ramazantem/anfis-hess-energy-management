@@ -56,7 +56,7 @@ enerji tüketimini (ECR) ve batarya yaşlanmasını azaltmak için ANFIS tabanl�
   tepe hız 82,9 km/h, ortalama hız 47,5 km/h, ivme -2,655 ile +2,723 m/s2.
 - Bu çevrim, batarya %80 boşalana kadar tekrarlanıyor (grafikler ~7000 s'ye uzanıyor).
 - Motor güç talebi: en fazla 5600 W, en fazla geri kazanım 1100 W.
-- Veri açık değil. Yazara e-posta atılacak, beklemeden Şekil 8'e benzeyen çevrim kurulacak.
+- Veri açık değil. Yazara e-posta atıldı, beklemeden Şekil 8'e benzeyen çevrim kuruldu.
 
 ## 7. Karşılaştırılan yöntemler
 (a) Sadece batarya, (b) FLC tabanlı EMS (Mamdani), (c) ANFIS tabanlı EMS (Sugeno).
@@ -81,13 +81,13 @@ Giriş değişkenleri (ikisi için de): B_SoC, SC_SoC, P_D (motorun güç talebi
 - Öğrenme: MF'ler geri yayılım (backpropagation) ile, kurallar en küçük kareler (LSE) ile.
 - Eğitim verisi nereden geldi: BELİRTİLMEMİŞ.
 
-Şekil 4'ten okunan yaklaşık trapez köşeleri (yaklaşık, grafikten okundu):
+Şekil 4'ten (PDF sayfa 6) okunan yaklaşık trapez köşeleri (grafikten okundu, yaklaşık):
 - B_SoC (%): Düşük (0,0)-(20,1)-(30,1)-(40,0); Orta (40,0)-(50,1)-(60,1)-(70,0);
   Yüksek (70,0)-(80,1)-(90,1)-(100,0)
+- SC_SoC (%): Düşük (0,0)-(20,1)-(40,1)-(60,0); Orta (55,0)-(65,1)-(75,1)-(85,0);
+  Yüksek (80,0)-(87,1)-(92,1)-(100,0)
 - P_D (W): Rejenerasyon (-5000,0)-(-4000,1)-(-2000,1)-(0,0); Düşük (0,0)-(1000,1)-(1500,1)-(2000,0);
   Orta (2000,0)-(3000,1)-(3500,1)-(4000,0); Yüksek (4000,0)-(4500,1)-(5000,1)-(5700,0)
-- SC_SoC (%): Düşük yaklaşık 0-60, Orta yaklaşık 55-85, Yüksek yaklaşık 80-100
-  (Şekil 4'ten tekrar kontrol edilecek)
 
 ## 9. Optimizasyon kısmı
 Başlıktaki "optimized" kelimesi ANFIS'in öğrenmesini (MF ve kural parametrelerinin
@@ -118,7 +118,15 @@ menzil, enerji tüketim oranı (ECR), batarya ve SC güç profilleri.
 - ECR yüzdeleri tutarsız görünüyor: 41,59 -> 38,55 gerçekte %7,31 azalma (%7,89 menzil
   artışının aynısı yazılmış). FLC için 41,59 -> 39,21 = %5,72 (makale %6 diyor).
 - ECR birimi metinde kWh/km, Şekil 19'da Wh/km. Doğrusu Wh/km (3,7 kWh / 41,59 Wh/km = 89 km).
-- Şekil 2 ve 3 başlıkları yer değiştirmiş (Şekil 2 çıkış MF'lerini gösteriyor).
+- Şekil 2 ve 3'ün başlıkları yer değiştirmiş: Şekil 2 çıkış MF'lerini (batarya ve SC
+  katsayısı), Şekil 3 ise giriş MF'lerini ve Mamdani yapısını gösteriyor. Giriş MF'lerinin
+  asıl grafikleri Şekil 4'te (başlığı "FLC system using Mamdani Type 1 fuzzifier").
+- ANFIS katman diyagramı (Şekil 5) "Fuzzy rules (36 Rules)" yazıyor, metin ise ANFIS için
+  45 kural diyor. Tutarsızlık; metindeki 45'i esas alacağız.
 - FLC'den ANFIS'e geçişte kural sayısı 36'dan 45'e çıkıyor (P_D için 4'ten 5 MF), yani
   karşılaştırma tam adil değil.
 - Batarya paket hesabı (14s22p) tablo değerleriyle uyuşmuyor (bölüm 4).
+
+## Gün 2: Modelleme Varsayımları ve Sınırlılıklar
+- Sürüş çevrimi: Makalenin hız verisi paylaşılmadığı için Şekil 8'e bakılarak yaklaşık
+  bir profil kuruldu (12,05 km, tepe 81 km/h, ort.
