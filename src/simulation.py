@@ -23,6 +23,9 @@ def simulate(v, dt, controller, use_sc=True, eta_drive=1.0, p_aux=0.0, regen_fra
         if p >= 0:
             share = controller(p, bat.soc, sc.soc) if use_sc else 0.0
             ps = sc.limit(share * p) if use_sc else 0.0
+            rech = getattr(controller, "recharge", None)  # isteğe bağlı: bataryadan SC'yi yeniden şarj
+            if use_sc and rech is not None and ps == 0.0:
+                ps = sc.limit(-rech(p, bat.soc, sc.soc))  # negatif = SC şarj olur
             pb = p - ps
         else:
             recovered = regen_frac * p  # negatif
