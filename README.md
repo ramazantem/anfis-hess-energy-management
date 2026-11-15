@@ -99,10 +99,10 @@ Makale sonuçları ile bu projenin simülasyonu (7 x 900 s, %80 boşalma derinli
 
 Yeniden şarj gücü taraması (ANFIS + rezerv):
 
-| Şarj gücü | 0 W | 400 W | 600 W | 800 W | 1000 W |
-|---|---|---|---|---|---|
-| Akım azalması | %31,8 | %33,2 | %32,9 | %44,4 | %44,4 |
-| Menzil (km) | 91,54 | 91,75 | 91,38 | 90,62 | 90,48 |
+| Şarj gücü | 0 W | 200 W | 400 W | 600 W | 800 W | 1000 W | 1500 W |
+|---|---|---|---|---|---|---|---|
+| Akım azalması | %31,8 | %32,1 | %33,2 | %32,9 | %44,4 | %44,4 | %44,4 |
+| Menzil (km) | 91,54 | 91,66 | 91,75 | 91,38 | 90,62 | 90,48 | 90,28 |
 
 Yorum: Tepe akım azalmasının büyük kısmı rezerv kuralından gelir. Şarj gücü arttıkça
 tepe akım daha da düşer ama menzil azalır, yani bir ödünleşim vardır. Önerilen yöntem,
@@ -119,4 +119,36 @@ Grafikler: `results/baseline_simulation.png`, `membership_functions.png`, `anfis
   makaledekiyle aynı olduğu iddia edilmez. ANFIS eğitim verisi de FLC çıkışıdır (varsayım).
 - ANFIS'te Gauss MF ve ızgara bölümleme kullanıldı (makale trapezoidal MF ve kümeleme kullanıyor).
 - 600 W sabit yardımcı yük, 0,05 ohm batarya iç direnci ve SC alt sınırı %30 varsayımdır (makalede yok).
-- Makalenin %25'lik tepe akım
+- Makalenin %25'lik tepe akım azalması yeniden üretilemedi: bizim modelimizde SC enerjisi (130 Wh)
+  ilk çevrimlerde tükeniyor.
+- Önerilen yöntemin parametreleri aynı sürüş çevriminde ayarlandı; farklı çevrimlerde
+  genelleme test edilmedi.
+- Makalenin kendi içinde tutarsızlıkları var (ECR yüzdeleri, Şekil 2/3 başlıkları, Şekil 5'te 36
+  kural yazması); ayrıntılar `docs/paper_notes.md` dosyasında.
+
+## Üretken Yapay Zekâ Kullanımı
+Bu projede kodun, deney tasarımının ve metinlerin hazırlanmasında üretken yapay zekâ
+(Anthropic Claude) yardımcı olarak kullanılmıştır. Çıktılar öğrenci tarafından çalıştırılıp
+kontrol edilmiştir. Ayrıntılı beyan raporda ayrı bir bölümdedir.
+
+## Klasör Yapısı
+- `data/` sürüş çevrimleri
+- `src/models/` sürüş çevrimi, araç, batarya ve süperkapasitör modelleri
+- `src/baseline/` sadece batarya ve kural tabanlı baseline
+- `src/fuzzy/` FLC (Mamdani) ve ANFIS (Sugeno)
+- `src/proposed/` önerilen SC rezerv yönetimi
+- `src/simulation.py` simülasyon motoru
+- `experiments/` deney betikleri
+- `results/` grafikler, tablolar, eğitilmiş ANFIS modeli
+- `docs/` makale notları ve literatür
+- `report/` rapor ve sunum
+
+## Kaynaklar
+1. Kumaresan, N. ve Rammohan, A. (2025). Adaptive neuro fuzzy inference system based optimized
+   energy management strategy for the power integration of battery and supercapacitor in electric
+   vehicle. Journal of Energy Storage, 126, 117073. https://doi.org/10.1016/j.est.2025.117073
+2. Jang, J.-S. R. (1993). ANFIS: Adaptive-network-based fuzzy inference system. IEEE Transactions
+   on Systems, Man, and Cybernetics, 23(3), 665-685.
+3. Mamdani, E. H. ve Assilian, S. (1975). An experiment in linguistic synthesis with a fuzzy logic
+   controller. International Journal of Man-Machine Studies, 7(1), 1-13.
+4. Diğer literatür notları: `docs/literature.md`
